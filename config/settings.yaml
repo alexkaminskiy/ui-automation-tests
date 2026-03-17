@@ -1,0 +1,11 @@
+base_url: "http://eaapp.somee.com/"
+browser: "chromium"
+headless: true
+slowmo: 0
+timeout: 5000
+
+credentials:
+  valid_user: "admin"
+  valid_password: "password"
+  invalid_user: "fakeuser"
+  invalid_password: "wrongpass"
