@@ -1,0 +1,5 @@
+pydantic
+PyYAML
+pytest
+pytest-playwright
+allure-pytest

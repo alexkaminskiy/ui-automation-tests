@@ -1,0 +1,5 @@
+{
+  "admin": { "username": "admin", "password": "password" },
+  "user": { "username": "test_user", "password": "3XCaQHd4" },
+  "invalid": { "username": "fake", "password": "wrong" }
+}
