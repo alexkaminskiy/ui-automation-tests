@@ -14,8 +14,8 @@ RUN apt-get update && \
     apt-get install -y openjdk-11-jre && \
     curl -o allure-commandline.zip -L https://github.com/allure-framework/allure2/releases/download/2.21.0/allure-2.21.0.zip && \
     unzip allure-commandline.zip -d /opt/ && \
-    sudo ln -s /opt/allure-2.21.0/bin/allure /usr/bin/allure && \
-    playwright install 
+    ln -s /opt/allure-2.21.0/bin/allure /usr/bin/allure
+RUN sudo playwright install 
 
 # Copy the rest of the application code
 COPY . .
