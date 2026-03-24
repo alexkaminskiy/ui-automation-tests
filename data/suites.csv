@@ -1,3 +1,3 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Tue Mar 24 09:52:09 UTC 2026","Tue Mar 24 09:52:09 UTC 2026","587","tests","test_navigation","","","","test_navigation_header",""
-"passed","Tue Mar 24 09:52:07 UTC 2026","Tue Mar 24 09:52:10 UTC 2026","2470","tests","test_employees","","","","test_add_new_employee",""
+"passed","Tue Mar 24 10:08:27 UTC 2026","Tue Mar 24 10:08:28 UTC 2026","594","tests","test_navigation","","","","test_navigation_header",""
+"passed","Tue Mar 24 10:08:26 UTC 2026","Tue Mar 24 10:08:29 UTC 2026","2697","tests","test_employees","","","","test_add_new_employee",""
