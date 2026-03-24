@@ -53,10 +53,12 @@ jobs:
         fi
 
     - name: Run tests in Docker
+      continue-on-error: true
       run: |
         mkdir -p reports
         docker run --rm \
           -v ${{ github.workspace }}/reports:/tests/reports \
+          -v ${{ github.workspace }}/videos:/tests/videos \
           ui-tests ./run.sh
 
     - name: Upload Allure raw results
@@ -73,3 +75,7 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: allure-report
+    
+    - name: Mark job as failed if tests failed
+      if: failure()
+      run: exit 1

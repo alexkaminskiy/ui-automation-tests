@@ -8,46 +8,45 @@ pytest_plugins = [
 ]
 
 
-@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+@pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
+    # Execute all other hooks to get the report object
     outcome = yield
-    result = outcome.get_result()
+    report = outcome.get_result()
 
-    if result.when == "call" and result.failed:
-        page = item.funcargs.get("app").page  # page object from your App fixture
+    # Only after test execution, and only for test failures:
+    if report.when == "call" and report.failed:
 
-        # Attach screenshot
-        allure.attach(
-            page.screenshot(),
-            name="screenshot",
-            attachment_type=allure.attachment_type.PNG
-        )
+        # Get Playwright page from fixtures
+        page = item.funcargs.get("app").page
 
-        # Attach HTML snapshot
-        allure.attach(
-            page.content(),
-            name="page_source",
-            attachment_type=allure.attachment_type.HTML
-        )
-
-        # Attach page console logs (optional)
+        # Screenshot
         try:
-            logs = page.context.browser.logs
-        except:
-            logs = "No log support"
-        allure.attach(
-            str(logs),
-            name="browser_logs",
-            attachment_type=allure.attachment_type.TEXT
-        )
+            allure.attach(
+                page.screenshot(full_page=True),
+                name="screenshot",
+                attachment_type=allure.attachment_type.PNG
+            )
+        except Exception as e:
+            print("Screenshot error:", e)
 
-        # Attach recorded video
+        # HTML snapshot
+        try:
+            allure.attach(
+                page.content(),
+                name="page-source",
+                attachment_type=allure.attachment_type.HTML
+            )
+        except Exception as e:
+            print("Page source error:", e)
+
+        # Video file (if enabled)
         try:
             video_path = page.video.path()
-            allure.attach(
-                file=video_path,
+            allure.attach.file(
+                video_path,
                 name="video",
                 attachment_type=allure.attachment_type.MP4
             )
         except Exception as e:
-            print("Video not available:", e)
+            print("Video error:", e)

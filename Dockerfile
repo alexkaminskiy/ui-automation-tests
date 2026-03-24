@@ -5,6 +5,7 @@ FROM python:3.12-slim
 WORKDIR /app
 
 RUN mkdir -p /tests
+RUN mkdir -p /app/videos
 
 # Install OS-level dependencies required by Playwright browsers
 # (this is required even when using `playwright install --with-deps`)
