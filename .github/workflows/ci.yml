@@ -29,13 +29,13 @@ jobs:
     - name: List Docker images (debug)
       run: docker image ls
 
-    - name: Install Allure CLI
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y openjdk-11-jre
-        curl -o allure-commandline.zip -L https://github.com/allure-framework/allure2/releases/download/2.21.0/allure-2.21.0.zip
-        unzip allure-commandline.zip -d /opt/
-        sudo ln -s /opt/allure-2.21.0/bin/allure /usr/bin/allure
+    # - name: Install Allure CLI
+    #   run: |
+    #     sudo apt-get update
+    #     sudo apt-get install -y openjdk-11-jre
+    #     curl -o allure-commandline.zip -L https://github.com/allure-framework/allure2/releases/download/2.21.0/allure-2.21.0.zip
+    #     unzip allure-commandline.zip -d /opt/
+    #     sudo ln -s /opt/allure-2.21.0/bin/allure /usr/bin/allure
 
     - name: Verify Allure Installation
       run: allure --version
