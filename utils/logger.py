@@ -1,10 +1,16 @@
 import logging
+import sys
 
+def get_logger(name="api-tests"):
+    logger = logging.getLogger(name)
+    logger.setLevel(logging.DEBUG)
 
-logger = logging.getLogger("eaapp")
-logger.setLevel(logging.INFO)
+    handler = logging.StreamHandler(sys.stdout)
+    handler.setFormatter(logging.Formatter(
+        "%(asctime)s | %(levelname)-8s | %(message)s"
+    ))
 
-handler = logging.StreamHandler()
-handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
+    if not logger.handlers:
+        logger.addHandler(handler)
 
-logger.addHandler(handler)
+    return logger
