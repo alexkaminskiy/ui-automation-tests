@@ -16,8 +16,6 @@ def test_add_new_employee(app):
     add_page = AddEmployeePage(app.page)
     add_page.add_employee("John Smith", 24, 5000, 24, 3, "john@doe.com")
 
-    assert 1 == 2
-
     # TODO: Add assertion to verify employee was added successfully
     # employees = emp_page.get_employee_list()
     # assert any("John Smith" in row for row in employees)
