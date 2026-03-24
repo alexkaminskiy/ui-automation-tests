@@ -11,7 +11,11 @@ def browser_context():
             headless=config["headless"],
             slow_mo=config["slowmo"]
         )
-        context = browser.new_context(base_url=config["base_url"])
+        context = browser.new_context(
+            base_url=config["base_url"],
+            record_video_dir="videos/",
+            record_har_path="network.har"
+        )
         yield context
         context.close()
         browser.close()
