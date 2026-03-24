@@ -1,3 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Thu Mar 19 13:00:02 UTC 2026","Thu Mar 19 13:00:04 UTC 2026","2430","tests","test_navigation","","","","test_navigation_header",""
-"passed","Thu Mar 19 12:59:59 UTC 2026","Thu Mar 19 13:00:01 UTC 2026","2103","tests","test_employees","","","","test_add_new_employee",""
