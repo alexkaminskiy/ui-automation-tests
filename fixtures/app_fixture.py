@@ -4,7 +4,7 @@ from pages.home_page import HomePage
 from utils.helpers import get_user_credentials
 
 
-@pytest.fixture
+@pytest.fixture(scope="function")
 def app(browser_context):
     """Provides application navigation helpers."""
     class App:

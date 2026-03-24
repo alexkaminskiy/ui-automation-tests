@@ -3,7 +3,7 @@ from playwright.sync_api import sync_playwright
 from utils.config_loader import load_config
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def browser_context():
     config = load_config()
     with sync_playwright() as p:
