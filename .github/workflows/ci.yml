@@ -36,7 +36,6 @@ jobs:
         curl -o allure-commandline.zip -L https://github.com/allure-framework/allure2/releases/download/2.21.0/allure-2.21.0.zip
         unzip allure-commandline.zip -d /opt/
         sudo ln -s /opt/allure-2.21.0/bin/allure /usr/bin/allure
-        playwright install 
 
     - name: Verify Allure Installation
       run: allure --version

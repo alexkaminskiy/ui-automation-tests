@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
 #     curl -o allure-commandline.zip -L https://github.com/allure-framework/allure2/releases/download/2.21.0/allure-2.21.0.zip && \
 #     unzip allure-commandline.zip -d /opt/ && \
 #     ln -s /opt/allure-2.21.0/bin/allure /usr/bin/allure
-# RUN sudo playwright install 
+RUN sudo playwright install 
 
 # Copy the rest of the application code
 COPY . .
