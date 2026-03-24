@@ -4,6 +4,7 @@ FROM python:3.12-slim
 # Set the working directory
 WORKDIR /app
 
+RUN mkdir -p /tests
 
 # Install OS-level dependencies required by Playwright browsers
 # (this is required even when using `playwright install --with-deps`)

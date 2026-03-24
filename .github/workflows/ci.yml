@@ -5,11 +5,9 @@ permissions:
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   test:
@@ -19,22 +17,21 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
-    
+
     - name: Build test image
       run: docker buildx build --load -t ui-tests .
- 
+
     - name: List Docker images (debug)
       run: docker image ls
 
     - name: Install Allure CLI
       run: |
         sudo apt-get update
-        sudo apt-get install -y openjdk-11-jre
-        curl -o allure-commandline.zip -L https://github.com/allure-framework/allure2/releases/download/2.21.0/allure-2.21.0.zip
-        unzip allure-commandline.zip -d /opt/
+        sudo apt-get install -y openjdk-17-jre
+        curl -o allure.zip -L https://github.com/allure-framework/allure2/releases/download/2.21.0/allure-2.21.0.zip
+        unzip allure.zip -d /opt/
         sudo ln -s /opt/allure-2.21.0/bin/allure /usr/bin/allure
 
     - name: Verify Allure Installation
@@ -43,8 +40,8 @@ jobs:
     - name: Download previous report history
       run: |
         mkdir -p history
-        git fetch origin gh-pages || echo "gh-pages branch not found yet"
-        git checkout gh-pages -- history || echo "No previous history found"
+        git fetch origin gh-pages || echo "no gh-pages"
+        git checkout gh-pages -- history || echo "no history"
 
     - name: Run tests in Docker
       run: |
@@ -52,23 +49,24 @@ jobs:
         docker run --rm \
           -v ${{ github.workspace }}/reports:/tests/reports \
           ui-tests ./run.sh
-    
+
     - name: Merge Allure history
       run: |
         mkdir -p reports/history
-        if [ -d "history" ]; then
-          cp -R history/* reports/history/ || true
+        if [ -d "history" ] && [ "$(ls -A history)" ]; then
+          cp -R history/* reports/history/
+        else
+          echo "No history to copy"
         fi
 
-    - name: Upload Allure Report
+    - name: Upload Allure raw results
       uses: actions/upload-artifact@v4
       with:
-        name: allure-report
+        name: allure-results
         path: reports
 
     - name: Generate Allure Report
-      run: |
-        allure generate reports -o allure-report
+      run: allure generate reports -o allure-report --clean
 
     - name: Deploy Allure Report to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
