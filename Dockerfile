@@ -14,10 +14,14 @@ RUN apt-get update && \
     apt-get install -y openjdk-11-jre && \
     curl -o allure-commandline.zip -L https://github.com/allure-framework/allure2/releases/download/2.21.0/allure-2.21.0.zip && \
     unzip allure-commandline.zip -d /opt/ && \
-    ln -s /opt/allure-2.21.0/bin/allure /usr/bin/allure
+    sudo ln -s /opt/allure-2.21.0/bin/allure /usr/bin/allure && \
+    playwright install 
 
 # Copy the rest of the application code
 COPY . .
 
+# Ensure run.sh is executable
+RUN chmod +x run.sh
+
 # Command to run tests
-CMD ["pytest", "--alluredir=reports"]
+CMD ["./run.sh"]

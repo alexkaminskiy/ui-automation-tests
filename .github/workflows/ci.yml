@@ -19,31 +19,47 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.12
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    
+    - name: Build test image
+      run: docker buildx build --load -t ui-tests .
+ 
+    - name: List Docker images (debug)
+      run: docker image ls
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-
-    - name: Install Allure CLI
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y openjdk-11-jre
-        curl -o allure-commandline.zip -L https://github.com/allure-framework/allure2/releases/download/2.21.0/allure-2.21.0.zip
-        unzip allure-commandline.zip -d /opt/
-        sudo ln -s /opt/allure-2.21.0/bin/allure /usr/bin/allure
-        playwright install 
+    # - name: Install Allure CLI
+    #   run: |
+    #     sudo apt-get update
+    #     sudo apt-get install -y openjdk-11-jre
+    #     curl -o allure-commandline.zip -L https://github.com/allure-framework/allure2/releases/download/2.21.0/allure-2.21.0.zip
+    #     unzip allure-commandline.zip -d /opt/
+    #     sudo ln -s /opt/allure-2.21.0/bin/allure /usr/bin/allure
+    #     playwright install 
 
     - name: Verify Allure Installation
       run: allure --version
 
-    - name: Run tests
+    - name: Download previous report history
       run: |
-        pytest -m smoke --alluredir=reports
+        mkdir -p history
+        git fetch origin gh-pages || echo "gh-pages branch not found yet"
+        git checkout gh-pages -- history || echo "No previous history found"
+
+    - name: Run tests in Docker
+      run: |
+        mkdir -p reports
+        docker run --rm \
+          -v ${{ github.workspace }}/reports:/tests/reports \
+          ui-tests ./run.sh
+    
+    - name: Merge Allure history
+      run: |
+        mkdir -p reports/history
+        if [ -d "history" ]; then
+          cp -R history/* reports/history/ || true
+        fi
 
     - name: Upload Allure Report
       uses: actions/upload-artifact@v4
