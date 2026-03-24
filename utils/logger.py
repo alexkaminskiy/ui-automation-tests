@@ -1,7 +1,7 @@
 import logging
 import sys
 
-def get_logger(name="api-tests"):
+def get_logger(name="ui-tests"):
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG)
 
