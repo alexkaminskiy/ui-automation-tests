@@ -62,8 +62,8 @@ def get_settings() -> Settings:
     s.slowmo = int(os.getenv("SLOWMO", s.slowmo))
     s.timeout = int(os.getenv("TIMEOUT", s.timeout))
 
-    s.admin_username = os.getenv("ADMIN_USERNAME", s.admin_username)
-    s.admin_password = os.getenv("ADMIN_PASSWORD", s.admin_password)
+    s.admin_username = os.getenv("AUTH_USER_NAME", s.admin_username)
+    s.admin_password = os.getenv("AUTH_PASSWORD", s.admin_password)
     s.invalid_username = os.getenv("INVALID_USERNAME", s.invalid_username)
     s.invalid_password = os.getenv("INVALID_PASSWORD", s.invalid_password)
 
