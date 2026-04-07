@@ -65,7 +65,9 @@ jobs:
           -e AUTH_USER_NAME="$AUTH_USER_NAME" \
           -e AUTH_PASSWORD="$AUTH_PASSWORD" \
           -v ${{ github.workspace }}/reports:/tests/reports \
-          -v ${{ github.workspace }}/videos:/tests/videos \
+          -v ${{ github.workspace }}/videos:/tests/reports/videos \
+          -v ${{ github.workspace }}/traces:/tests/reports/traces \
+          -v ${{ github.workspace }}/screenshots:/tests/reports/screenshots \
           ui-tests ./run.sh
 
     - name: Upload Allure raw results

@@ -13,8 +13,6 @@ class LoginPage(BasePage):
         self.login_button = page.get_by_role("button", name="Sign In")
 
     def login(self, user, pwd):
-        # Use Playwright's Locator methods directly
         self.username.fill(user)
         self.password.fill(pwd)
-        
         self.login_button.click()

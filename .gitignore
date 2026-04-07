@@ -1,6 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+explore_delete.py
 
 # Virtual environment
 venv/
@@ -21,3 +22,10 @@ Thumbs.db
 
 # Local environment file
 .env
+
+# Log files
+*.log
+network.har
+videos
+*.png
+DELETE_EMPLOYEE_SUMMARY.md

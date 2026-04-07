@@ -12,7 +12,7 @@ It is recommended to use a virtual environment to manage dependencies.
 ### Windows
 1. Create a virtual environment:
    ```bash
-   py -m venv venv
+   python -m venv venv
    ```
 2. Activate the virtual environment:
    ```bash
