@@ -16,7 +16,7 @@ def browser_instance():
         browser.close()
 
 
-@pytest.fixture
+@pytest.fixture()
 def browser_context(browser_instance, request):
     browser, config = browser_instance
 

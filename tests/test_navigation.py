@@ -1,7 +1,7 @@
 import pytest
 from utils.helpers import get_user_credentials
 
-@pytest.mark.smoke
+@pytest.mark.ui
 # @pytest.mark.skip(reason="Temp disabled")
 def test_navigation_header(app, home):
     username, password = get_user_credentials("admin")

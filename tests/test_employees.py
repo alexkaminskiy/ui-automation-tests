@@ -12,7 +12,7 @@ EMPLOYEE_GRADE = 3
 EMPLOYEE_EMAIL = "alex@smith.com"
 
 
-@pytest.mark.smoke
+@pytest.mark.ui
 def test_add_new_employee(app):
     username, password = get_user_credentials("admin")
     home = app.login(username, password)

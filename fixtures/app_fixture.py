@@ -4,7 +4,7 @@ from pages.home_page import HomePage
 from utils.helpers import get_user_credentials
 
 
-@pytest.fixture
+@pytest.fixture()
 def app(browser_context):
     """Provides application navigation helpers."""
     class App:
@@ -34,7 +34,7 @@ def app(browser_context):
         _app._page.close()
 
 
-@pytest.fixture
+@pytest.fixture()
 def home(app):
     """Provides a logged-in HomePage instance."""
     username, password = get_user_credentials("admin")
