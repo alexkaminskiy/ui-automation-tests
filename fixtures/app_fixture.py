@@ -4,13 +4,19 @@ from pages.home_page import HomePage
 from utils.helpers import get_user_credentials
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture()
 def app(browser_context):
     """Provides application navigation helpers."""
     class App:
         def __init__(self, ctx):
             self.ctx = ctx
-            self.page = ctx.new_page()
+            self._page = None
+
+        @property
+        def page(self):
+            if self._page is None:
+                self._page = self.ctx.new_page()
+            return self._page
 
         def login(self, username, password):
             lp = LoginPage(self.page)
@@ -19,16 +25,18 @@ def app(browser_context):
             return HomePage(self.page)
 
         def is_logged_in(self):
-            return "Employees" in self.page.content()
+            return "/home" in self.page.url  # or check a specific element
 
-    app = App(browser_context)
-    yield app
-    app.page.close()
+    _app = App(browser_context)
+    yield _app
 
-@pytest.fixture
+    if _app._page:
+        _app._page.close()
+
+
+@pytest.fixture()
 def home(app):
     """Provides a logged-in HomePage instance."""
-    if not app.is_logged_in():
-        username, password = get_user_credentials("admin")
-        return app.login(username, password)
-    return HomePage(app.page)
+    username, password = get_user_credentials("admin")
+    home_page = app.login(username, password)
+    yield home_page

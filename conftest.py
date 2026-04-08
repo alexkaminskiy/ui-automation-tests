@@ -1,6 +1,7 @@
 import allure
 import pytest
 
+
 pytest_plugins = [
     "fixtures.browser_fixture",
     "fixtures.app_fixture",
