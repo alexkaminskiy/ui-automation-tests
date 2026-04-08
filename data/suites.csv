@@ -1,4 +1,4 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Wed Apr 08 10:05:06 UTC 2026","Wed Apr 08 10:05:06 UTC 2026","791","tests","test_navigation","","","","test_navigation_header",""
-"passed","Wed Apr 08 10:05:04 UTC 2026","Wed Apr 08 10:05:10 UTC 2026","5677","tests","test_employees","","","","test_add_new_employee",""
-"skipped","Wed Apr 08 10:05:10 UTC 2026","Wed Apr 08 10:05:10 UTC 2026","0","tests","test_employees","","","","test_delete_employee_alex_smith","Test deleting an employee (Alex Smith) from the employees list."
+"passed","Wed Apr 08 10:06:52 UTC 2026","Wed Apr 08 10:06:57 UTC 2026","5546","tests","test_employees","","","","test_add_new_employee",""
+"skipped","Wed Apr 08 10:06:58 UTC 2026","Wed Apr 08 10:06:58 UTC 2026","0","tests","test_employees","","","","test_delete_employee_alex_smith","Test deleting an employee (Alex Smith) from the employees list."
+"passed","Wed Apr 08 10:06:53 UTC 2026","Wed Apr 08 10:06:54 UTC 2026","837","tests","test_navigation","","","","test_navigation_header",""
