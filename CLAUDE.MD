@@ -61,6 +61,9 @@ Claude must follow these instructions exactly.
   - Why it was changed
   - How it was tested
 - Avoid unnecessary comments in PRs
+- Always leave a summary comment when explicitly asked
+- If the PR complies with all rules, explicitly state "No issues found"
+- Do not acknowledge reviews silently when directly prompted
 
 ---
 
@@ -77,4 +80,3 @@ Claude must follow these instructions exactly.
 - Favor correctness over speed
 - Minimize noise
 - Be precise and factual
-``
