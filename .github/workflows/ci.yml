@@ -88,6 +88,9 @@ jobs:
     - name: Send Teams Notification
       if: always()   # send even if tests fail
       run: |
+        echo "Sending Teams notification: UI Automation Tests Run Completed. \nAllure Report:
+            https://alexkaminskiy.github.io/ui-automation-tests/"
+        
         MESSAGE="UI Automation Tests Run Completed. \nAllure Report:
             https://alexkaminskiy.github.io/ui-automation-tests/"
 
