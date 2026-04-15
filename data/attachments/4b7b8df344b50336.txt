@@ -1,2 +1,0 @@
-Heading message: Employee Management
-Built for Scale
