@@ -62,7 +62,7 @@ def test_add_new_employee(app):
 @allure.description("Test deleting an employee (Alex Smith) from the employees list")
 @allure.feature("Employee Management")
 @allure.story("Delete Employee")
-def test_delete_employee_alex_smith(app):
+def test_delete_employee(app):
     """Test deleting an employee (Alex Smith) from the employees list."""
     with allure.step("Login to the application"):
         username, password = get_user_credentials("admin")

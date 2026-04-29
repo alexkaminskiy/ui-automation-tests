@@ -1,7 +1,7 @@
 base_url: "http://eaapp.somee.com/"
 browser: "chromium"
 headless: true
-slowmo: 0
+slowmo: 1000
 timeout: 5000
 
 credentials:
