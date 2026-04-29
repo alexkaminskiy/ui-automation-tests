@@ -1,30 +1,41 @@
 from pages.base_page import BasePage
 from playwright.sync_api import Page, expect
 from utils.waits import wait_visible
+from typing import List
 
 
 class EmployeesPage(BasePage):
 
+    url = "/Employee"
+
     def __init__(self, page: Page):
         super().__init__(page)
-        self.add_button = page.get_by_role("link", name="+ New Employee")
+        self.add_button = self.page.get_by_role("link", name="+ New Employee")
         self.table_rows = "xpath=//tbody"
 
-    def open_add_employee(self):
+    def open_add_employee(self) -> None:
+        """Click the button to open the add employee form."""
         self.add_button.click()
 
-    def get_employee_list(self):
+    def get_employee_list(self) -> List[str]:
+        """Retrieve the list of employees from the table.
+
+        Returns:
+            List[str]: A list of text content from each row in the employees table
+        """
         wait_visible(self.page.locator(self.table_rows))
         employee_list = self.page.locator(self.table_rows).all_inner_texts()
         
         return employee_list
 
-    def delete_employee(self, employee_name: str):
-        """
-        Delete an employee by name from the employees list.
+    def delete_employee(self, employee_name: str) -> None:
+        """Delete an employee by name from the employees list.
         
         Args:
-            employee_name (str): The name of the employee to delete (e.g., "Alex Smith")
+            employee_name: The name of the employee to delete (e.g., "Alex Smith")
+
+        Raises:
+            ValueError: If the employee is not found in the list
         """
         # Find the row containing the employee name
         rows = self.page.locator("tbody tr")

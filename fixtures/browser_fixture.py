@@ -42,6 +42,6 @@ def browser_context(browser_instance, request):
     if failed:
         context.tracing.stop(path=f"reports/traces/{test_name}.zip")
     else:
-        context.tracing.stop()
+        context.tracing.stop(path=f"reports/traces/{test_name}.zip")
 
     context.close()
