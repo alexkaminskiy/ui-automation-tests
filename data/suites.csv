@@ -1,4 +1,4 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Wed Apr 15 10:24:38 UTC 2026","Wed Apr 15 10:24:42 UTC 2026","4090","tests","test_employees","","","","test_add_new_employee",""
-"passed","Wed Apr 15 10:24:39 UTC 2026","Wed Apr 15 10:24:40 UTC 2026","693","tests","test_navigation","","","","test_navigation_header",""
-"skipped","Wed Apr 15 10:24:42 UTC 2026","Wed Apr 15 10:24:42 UTC 2026","0","tests","test_employees","","","","test_delete_employee_alex_smith","Test deleting an employee (Alex Smith) from the employees list."
+"skipped","Wed Apr 29 10:38:01 UTC 2026","Wed Apr 29 10:38:01 UTC 2026","0","tests","test_employees","","","","Delete employee Alex Smith","Test deleting an employee (Alex Smith) from the employees list"
+"passed","Wed Apr 29 10:37:40 UTC 2026","Wed Apr 29 10:38:00 UTC 2026","19778","tests","test_employees","","","","Add and delete a new employee","Test adding a new employee to the system and then verifying deletion"
+"passed","Wed Apr 29 10:37:46 UTC 2026","Wed Apr 29 10:37:50 UTC 2026","4515","tests","test_navigation","","","","Verify navigation header","Test that the homepage header displays the correct heading message"
